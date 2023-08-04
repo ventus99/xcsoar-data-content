@@ -1,4 +1,5 @@
 #!/bin/env python3
+# -*- coding: utf-8 -*-
 """
 Auto-generate these files from directory listing xcsoar-data-content/waypoints:
 
@@ -36,7 +37,11 @@ def git_commit_datetime(filename: Path) -> datetime.datetime:
 def waypoint_mean(filename: Path) -> tuple:
     """Return the (latitude, longitude) tuple mean of waypoint filename."""
 
-    waypoints = CupReader().read(open(filename))["waypoints"]
+    try:
+        waypoints = CupReader().read(open(filename))["waypoints"]
+    except:
+        print("Failing file: " + str(filename))
+        sys.exit()
 
     cum_lat, cum_lon, count = 0.0, 0.0, 0
     for wp in waypoints:

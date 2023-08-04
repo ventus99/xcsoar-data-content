@@ -1,4 +1,5 @@
 #!/bin/env python3
+# -*- coding: utf-8 -*-
 """Check if all the repository URLs are working."""
 
 import sys
@@ -44,7 +45,6 @@ def check_urls(urls: List[str]) -> bool:
 
 
 if __name__ == "__main__":
-
     # allow to specify the repository as argument
     if len(sys.argv) > 1:
         repo_url = sys.argv[1]
